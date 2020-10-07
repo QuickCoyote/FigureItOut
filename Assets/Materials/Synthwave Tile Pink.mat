@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SynthwaveTile
+  m_Name: Synthwave Tile Pink
   m_Shader: {fileID: -6465566751694194690, guid: 45ec72eab89594a49b21740d44c151a8,
     type: 3}
   m_ShaderKeywords: 
@@ -64,7 +64,13 @@ Material:
         m_Texture: {fileID: 2800000, guid: d651bd978f21fcf4699926bca3eecbf8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_C132EC3D_Out_0:
+        m_Texture: {fileID: 2800000, guid: 2f1a7360fa194b945b5e01fe7bc038cb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_ABE6A8F2: 2
+    - Vector1_CA81B3CA: 0
     - Vector1_CF8F3004: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -84,9 +90,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_A7BB25BA: {r: 0.9846568, g: 0, b: 1, a: 0}
-    - Color_F24A070: {r: 0, g: 0.95150995, b: 1, a: 0}
-    - Vector2_69651A6E: {r: 0, g: 0, b: 0, a: 0}
-    - Vector2_9001C2D2: {r: 30, g: 30, b: 0, a: 0}
+    - Color_CC209407: {r: 0, g: 0, b: 0, a: 0}
+    - Color_F24A070: {r: 1, g: 0, b: 0.9312868, a: 0}
+    - Vector2_69651A6E: {r: 1, g: 0, b: 0, a: 0}
+    - Vector2_9001C2D2: {r: 32, g: 32, b: 0, a: 0}
     - Vector2_C0017E3B: {r: 5, g: 5, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

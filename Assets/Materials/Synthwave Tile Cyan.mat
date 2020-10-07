@@ -4,13 +4,15 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Skybox_Mat
-  m_Shader: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _METALLIC_SETUP _SUNDISK_HIGH_QUALITY
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Synthwave Tile Cyan
+  m_Shader: {fileID: -6465566751694194690, guid: 45ec72eab89594a49b21740d44c151a8,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -18,6 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_934DDFFA:
+        m_Texture: {fileID: 2800000, guid: fdd57a0c88c77c64cb91a492d7c99695, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -54,17 +60,22 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
-        m_Texture: {fileID: 0}
+    - _Texture2DAsset_82E8C683_Out_0:
+        m_Texture: {fileID: 2800000, guid: d651bd978f21fcf4699926bca3eecbf8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_C132EC3D_Out_0:
+        m_Texture: {fileID: 2800000, guid: 2f1a7360fa194b945b5e01fe7bc038cb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AtmosphereThickness: 0.53
+    - Vector1_ABE6A8F2: 2
+    - Vector1_CA81B3CA: 0.25
+    - Vector1_CF8F3004: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Exposure: 1.25
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -75,15 +86,14 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SunDisk: 2
-    - _SunSize: 0.04
-    - _SunSizeConvergence: 5
     - _UVSec: 0
-    - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_A7BB25BA: {r: 0.9846568, g: 0, b: 1, a: 0}
+    - Color_CC209407: {r: 0, g: 0, b: 0, a: 0}
+    - Color_F24A070: {r: 0, g: 0.95150995, b: 1, a: 0}
+    - Vector2_69651A6E: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_9001C2D2: {r: 10, g: 10, b: 0, a: 0}
+    - Vector2_C0017E3B: {r: 5, g: 5, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0.6392157, g: 0.6901961, b: 0.7411765, a: 1}
-    - _SkyTint: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
