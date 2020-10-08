@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsManager : MonoBehaviour
+public class OptionsManager : Manager
 {
+    public bool isUIOpen = false;
+
     [SerializeField] GameObject PausePanel = null;
 
     [Header("Horizontal Sensitivity")]
@@ -38,6 +38,7 @@ public class OptionsManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             PausePanel.SetActive(true);
+            isUIOpen = true;
         }
     }
 
@@ -84,5 +85,6 @@ public class OptionsManager : MonoBehaviour
     {
         PausePanel.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        isUIOpen = false;
     }
 }

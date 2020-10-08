@@ -25,39 +25,42 @@ public class PlayerAimController : MonoBehaviour
 
     void Update()
     {
-        horizontalValue += Input.GetAxis("Mouse X") * horizontalSensitivity;
-        verticalValue += -Input.GetAxis("Mouse Y") * verticalSensitivity;
-
-        verticalValue = Mathf.Clamp(verticalValue, -verticalClampAngle, verticalClampAngle);
-
-        PlayerCamera.transform.rotation = Quaternion.Euler(verticalValue, horizontalValue, 0.0f);
-
-        if(Input.GetKey(KeyCode.UpArrow))
+        if (GlobalManager.Instance.playerInControl)
         {
-            AdjustHeight(1);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            AdjustHeight(-1);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            AdjustWidth(1);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            AdjustWidth(-1);
-        }
+            horizontalValue += Input.GetAxis("Mouse X") * horizontalSensitivity;
+            verticalValue += -Input.GetAxis("Mouse Y") * verticalSensitivity;
 
-        RaycastHit result;
+            verticalValue = Mathf.Clamp(verticalValue, -verticalClampAngle, verticalClampAngle);
 
-        if(Physics.Raycast(transform.position, PlayerCamera.transform.forward, out result))
-        {
-            float distance = (transform.position - result.point).magnitude;
+            PlayerCamera.transform.rotation = Quaternion.Euler(verticalValue, horizontalValue, 0.0f);
 
-            distance = Mathf.Ceil(distance);
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                AdjustHeight(1);
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                AdjustHeight(-1);
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                AdjustWidth(1);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                AdjustWidth(-1);
+            }
 
-            distanceTextUGUI.text = distance + "m";
+            RaycastHit result;
+
+            if (Physics.Raycast(transform.position, PlayerCamera.transform.forward, out result))
+            {
+                float distance = (transform.position - result.point).magnitude;
+
+                distance = Mathf.Ceil(distance);
+
+                distanceTextUGUI.text = distance + "m";
+            }
         }
 
         UpdateSensitivity();
