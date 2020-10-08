@@ -6,13 +6,13 @@ using UnityEngine;
 public class PlayerAimController : MonoBehaviour
 {
     [SerializeField] GameObject PlayerCamera = null;
-    [SerializeField] float horizontalSensitivity = 2.0f;
-    [SerializeField] float verticalSensitivity = 2.0f;
+    [SerializeField] public float horizontalSensitivity = 2.0f;
+    [SerializeField] public float verticalSensitivity = 2.0f;
     [SerializeField] float verticalClampAngle = 85.0f;
 
+    [Header("UI")]
     [SerializeField] RectTransform crosshair1 = null;
     [SerializeField] RectTransform crosshair2 = null;
-
     [SerializeField] TextMeshProUGUI distanceTextUGUI = null;
 
     private float verticalValue = 0.0f;
@@ -62,8 +62,6 @@ public class PlayerAimController : MonoBehaviour
                 distanceTextUGUI.text = distance + "m";
             }
         }
-
-        UpdateSensitivity();
     }
 
     public void AdjustWidth(float value)
@@ -76,11 +74,5 @@ public class PlayerAimController : MonoBehaviour
     {
         crosshair1.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, crosshair1.rect.height + value);
         crosshair2.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, crosshair2.rect.height + value);
-    }
-
-    public void UpdateSensitivity()
-    {
-        horizontalSensitivity = PlayerPrefs.GetFloat("HorizontalSensitivity");
-        verticalSensitivity = PlayerPrefs.GetFloat("VerticalSensitivity");
     }
 }
