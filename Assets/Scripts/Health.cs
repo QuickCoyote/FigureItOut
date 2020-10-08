@@ -5,12 +5,14 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] int maxHealth = 5;
-    int currentHealth = 5;
+    public int currentHealth = 5;
 
+    public int entityID = 0;
 
-    void Start()
+    public void Initialize()
     {
         currentHealth = maxHealth;
+        GlobalManager.Instance.entityDictionary.Add(entityID, gameObject);
     }
 
     public void TakeDamage(int amount)
@@ -19,6 +21,7 @@ public class Health : MonoBehaviour
 
         if(currentHealth < 0)
         {
+            GlobalManager.Instance.entityDictionary.Remove(entityID);
             Destroy(gameObject);
         }
     }

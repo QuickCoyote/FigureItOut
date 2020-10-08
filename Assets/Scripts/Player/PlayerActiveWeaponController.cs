@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerActiveWeaponController : MonoBehaviour
 {
     public List<GameObject> weaponList = new List<GameObject>();
+    public GameObject activeWeapon = null;
 
     public void ActivateWeapon(int position)
     {
@@ -12,6 +13,7 @@ public class PlayerActiveWeaponController : MonoBehaviour
             if(i == position)
             {
                 weaponList[i].SetActive(true);
+                activeWeapon = weaponList[i];
             }
             else
             {

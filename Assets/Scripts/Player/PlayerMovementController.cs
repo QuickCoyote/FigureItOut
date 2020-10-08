@@ -22,13 +22,12 @@ public class PlayerMovementController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        GetComponent<Health>().Initialize();
     }
 
     void Update()
     {
         CheckGrounded();
-
-        Debug.Log("Grounded? " + isGrounded);
 
         if (isGrounded)
         {
@@ -86,7 +85,6 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hit Da Ground");
         // This is determining when we've hit something to check if it is from the grounded layers. if it is, we rotate the player with it.
         if (groundedLayerMask == (groundedLayerMask | (1 << collision.gameObject.layer)))
         {

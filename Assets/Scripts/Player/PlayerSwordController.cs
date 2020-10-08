@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class PlayerSwordController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] int weaponDamage = 1;
+    [SerializeField] GameObject WeaponProjectile = null;
+    [SerializeField] float cooldownTime = 10.0f;
+    [SerializeField] float cooldownTimer = 0.0f;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+
+        if (cooldownTimer <= 0)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Projectile swordProjectile = Instantiate(WeaponProjectile, transform.position, Quaternion.identity, null).GetComponent<Projectile>();
+
+                Health swordProjectileHealth = swordProjectile.GetComponent<Health>();
+                swordProjectileHealth.entityID = GlobalManager.Instance.entityDictionary.Count;
+                swordProjectileHealth.Initialize();
+
+                swordProjectile.travelDirection = GlobalManager.Instance.playerAimController.PlayerCamera.transform.forward;
+                swordProjectile.parentID = GlobalManager.Instance.playerAimController.gameObject.GetComponent<Health>().entityID;
+
+
+                swordProjectile.transform.LookAt(swordProjectile.travelDirection + swordProjectile.transform.position, -GlobalManager.Instance.playerAimController.PlayerCamera.transform.right);
+                cooldownTimer = cooldownTime;
+            }
+        }
     }
 }

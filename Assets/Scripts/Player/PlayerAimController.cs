@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerAimController : MonoBehaviour
 {
-    [SerializeField] GameObject PlayerCamera = null;
+    [SerializeField] public GameObject PlayerCamera = null;
     [SerializeField] public float horizontalSensitivity = 2.0f;
     [SerializeField] public float verticalSensitivity = 2.0f;
     [SerializeField] float verticalClampAngle = 85.0f;

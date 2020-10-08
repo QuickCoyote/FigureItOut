@@ -12,10 +12,7 @@ public class GlobalManager : Singleton<GlobalManager>
 
     public OptionsManager optionsManager = null;
 
-    void Start()
-    {
-
-    }
+    public Dictionary<int, GameObject> entityDictionary = new Dictionary<int, GameObject>();
 
     void Update()
     {
