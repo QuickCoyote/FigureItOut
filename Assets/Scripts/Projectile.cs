@@ -33,35 +33,31 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collided");
         Health CollidedHealth = collision.gameObject.GetComponent<Health>();
 
         if (CollidedHealth != null)
         {
             if (CollidedHealth.entityID != parentID)
             {
-                Health collidedHealth = collision.gameObject.GetComponent<Health>();
-
-                if (collidedHealth != null)
+                if (CollidedHealth.gameObject.layer == destructableObjectLayer)
                 {
-                    if(collidedHealth.gameObject.layer == destructableObjectLayer)
+                    if (CollidedHealth.currentHealth > hp.currentHealth)
                     {
-                        if(collidedHealth.currentHealth > hp.currentHealth)
-                        {
-                            collidedHealth.TakeDamage(hp.currentHealth);
-                            hp.currentHealth = 0;
-                        }
-                        else
-                        {
-                            hp.TakeDamage(collidedHealth.currentHealth);
-                            collidedHealth.currentHealth = 0;
-                        }
+                        CollidedHealth.TakeDamage(hp.currentHealth);
+                        hp.TakeDamage(hp.currentHealth);
                     }
-                    collidedHealth.TakeDamage(projectileDamage);
+                    else
+                    {
+                        hp.TakeDamage(CollidedHealth.currentHealth);
+                        CollidedHealth.TakeDamage(CollidedHealth.currentHealth);
+                    }
                 }
+                CollidedHealth.TakeDamage(1);
             }
+            return;
         }
 
-        hp.TakeDamage(1);
-        Debug.Log("Taking Damage");
+        hp.TakeDamage(hp.currentHealth);
     }
 }

@@ -8,30 +8,34 @@ public class PlayerSwordController : MonoBehaviour
     [SerializeField] GameObject WeaponProjectile = null;
     [SerializeField] float cooldownTime = 10.0f;
     [SerializeField] float cooldownTimer = 0.0f;
+    [SerializeField] Transform projectileSpawnPosition = null;
 
     void Update()
     {
-        if (cooldownTimer > 0)
+        if (GlobalManager.Instance.playerInControl)
         {
-            cooldownTimer -= Time.deltaTime;
-        }
-
-        if (cooldownTimer <= 0)
-        {
-            if (Input.GetMouseButtonDown(0))
+            if (cooldownTimer > 0)
             {
-                Projectile swordProjectile = Instantiate(WeaponProjectile, transform.position, Quaternion.identity, null).GetComponent<Projectile>();
+                cooldownTimer -= Time.deltaTime;
+            }
 
-                Health swordProjectileHealth = swordProjectile.GetComponent<Health>();
-                swordProjectileHealth.entityID = GlobalManager.Instance.entityDictionary.Count;
-                swordProjectileHealth.Initialize();
+            if (cooldownTimer <= 0)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Projectile swordProjectile = Instantiate(WeaponProjectile, projectileSpawnPosition.position, Quaternion.identity, null).GetComponent<Projectile>();
 
-                swordProjectile.travelDirection = GlobalManager.Instance.playerAimController.PlayerCamera.transform.forward;
-                swordProjectile.parentID = GlobalManager.Instance.playerAimController.gameObject.GetComponent<Health>().entityID;
+                    Health swordProjectileHealth = swordProjectile.GetComponent<Health>();
+                    swordProjectileHealth.entityID = GlobalManager.Instance.entityDictionary.Count;
+                    swordProjectileHealth.Initialize();
+
+                    swordProjectile.travelDirection = (GlobalManager.Instance.playerAimController.crosshairPosition - projectileSpawnPosition.position).normalized;
+                    swordProjectile.parentID = GlobalManager.Instance.playerAimController.gameObject.GetComponent<Health>().entityID;
 
 
-                swordProjectile.transform.LookAt(swordProjectile.travelDirection + swordProjectile.transform.position, -GlobalManager.Instance.playerAimController.PlayerCamera.transform.right);
-                cooldownTimer = cooldownTime;
+                    swordProjectile.transform.LookAt(swordProjectile.travelDirection + swordProjectile.transform.position, -GlobalManager.Instance.playerAimController.PlayerCamera.transform.right);
+                    cooldownTimer = cooldownTime;
+                }
             }
         }
     }

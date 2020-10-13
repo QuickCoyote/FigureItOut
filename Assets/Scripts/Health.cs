@@ -19,9 +19,12 @@ public class Health : MonoBehaviour
     {
         currentHealth -= amount;
 
-        if(currentHealth < 0)
+        Debug.Log("Took Damage");
+
+        if(currentHealth <= 0)
         {
-            GlobalManager.Instance.entityDictionary.Remove(entityID);
+            //GlobalManager.Instance.entityDictionary.Remove(entityID);
+            Debug.Log("Should have destroyed");
             Destroy(gameObject);
         }
     }

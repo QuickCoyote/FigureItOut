@@ -18,6 +18,8 @@ public class PlayerAimController : MonoBehaviour
     private float verticalValue = 0.0f;
     float horizontalValue = 0.0f;
 
+    public Vector3 crosshairPosition = Vector3.zero;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -53,9 +55,11 @@ public class PlayerAimController : MonoBehaviour
 
             RaycastHit result;
 
-            if (Physics.Raycast(transform.position, PlayerCamera.transform.forward, out result))
+            if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out result))
             {
                 float distance = (transform.position - result.point).magnitude;
+
+                crosshairPosition = result.point;
 
                 distance = Mathf.Ceil(distance);
 

@@ -65,7 +65,10 @@ public class PlayerMovementController : MonoBehaviour
                 availableAerialMoves--;
             }
         }
+    }
 
+    private void FixedUpdate()
+    {
         rb.velocity = (movementDirection * movementSpeed * Time.deltaTime);
     }
 
