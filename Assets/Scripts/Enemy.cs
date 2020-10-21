@@ -7,8 +7,23 @@ public abstract class Enemy : MonoBehaviour
     public bool hasRecievedRelayInfo = false;
     public float fovAngle = 45f;
     public float sightDistance = 25f;
+    public float maxMemoryTime = 5.0f;
+
+    public bool remembersTarget = false;
 
     public GameObject target = null;
+
+    private float memoryTime = 5.0f;
+
+    public void UpdateMemoryTime()
+    {
+        memoryTime -= Time.deltaTime;
+
+        if(memoryTime <= 0)
+        {
+            remembersTarget = false;
+        }
+    }
 
     public bool CanSeeTarget()
     {
@@ -28,6 +43,8 @@ public abstract class Enemy : MonoBehaviour
                 {
                     if (hitInfo.transform.gameObject == target)
                     {
+                        remembersTarget = true;
+                        memoryTime = maxMemoryTime;
                         return true;
                     }
                     else
