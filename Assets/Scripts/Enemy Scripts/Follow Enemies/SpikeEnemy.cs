@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikeEnemy : MonoBehaviour
+public class SpikeEnemy : FollowEnemy
 {
     // Start is called before the first frame update
     void Start()
