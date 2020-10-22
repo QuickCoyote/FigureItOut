@@ -21,20 +21,20 @@ public class FollowEnemy : Enemy
     private float drag = 10;
 
     [SerializeField]
-    [Range(0.0f, 100.0f)]
+    [Range(0.0f, 1000.0f)]
     private float rotateSpeed = 10;
 
     private Vector3 direction = Vector3.zero;
     private Rigidbody rb;
 
-    private void Start()
+    public void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    public void Update()
     {
-        Debug.Log(fovAngle);
+        Debug.Log(rb.velocity.magnitude);
         UpdateMemoryTime();
         Debug.DrawLine(transform.position, transform.forward * sightDistance + transform.position, Color.blue);
         Debug.DrawLine(transform.position, (Quaternion.AngleAxis(fovAngle, transform.up) * (transform.forward * sightDistance)) + transform.position, Color.red);

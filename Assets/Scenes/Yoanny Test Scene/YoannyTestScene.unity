@@ -255,7 +255,7 @@ BoxCollider:
   m_GameObject: {fileID: 722303950}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -509,7 +509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834874276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.24, y: 0, z: 0}
+  m_LocalPosition: {x: 3.41, y: 0, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -527,6 +527,7 @@ GameObject:
   - component: {fileID: 1929126751}
   - component: {fileID: 1929126750}
   - component: {fileID: 1929126749}
+  - component: {fileID: 1929126754}
   - component: {fileID: 1929126748}
   - component: {fileID: 1929126753}
   m_Layer: 0
@@ -543,7 +544,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929126747}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fb12877c3490504b913c99d5c814300, type: 3}
   m_Name: 
@@ -551,10 +552,14 @@ MonoBehaviour:
   hasRecievedRelayInfo: 0
   fovAngle: 45
   sightDistance: 25
+  maxMemoryTime: 3
+  remembersTarget: 0
   target: {fileID: 1834874276}
-  speed: 10
+  speed: 30
+  acceleration: 0.5
   damage: 10
   drag: 1
+  rotateSpeed: 354
 --- !u!135 &1929126749
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -644,5 +649,28 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 16
   m_CollisionDetection: 0
+--- !u!114 &1929126754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929126747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4247442fe69c4214ab0cb8b4873d1cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasRecievedRelayInfo: 0
+  fovAngle: 45
+  sightDistance: 25
+  maxMemoryTime: 5
+  remembersTarget: 0
+  target: {fileID: 1834874276}
+  speed: 30
+  acceleration: 0.5
+  damage: 10
+  drag: 1
+  rotateSpeed: 354
