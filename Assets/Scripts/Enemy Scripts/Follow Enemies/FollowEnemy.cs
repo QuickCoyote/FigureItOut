@@ -10,11 +10,19 @@ public class FollowEnemy : Enemy
 
     [SerializeField]
     [Range(0.0f, 100.0f)]
+    private float acceleration = 10;
+
+    [SerializeField]
+    [Range(0.0f, 100.0f)]
     private float damage = 10;
 
     [SerializeField]
     [Range(0.0f, 100.0f)]
     private float drag = 10;
+
+    [SerializeField]
+    [Range(0.0f, 100.0f)]
+    private float rotateSpeed = 10;
 
     private Vector3 direction = Vector3.zero;
     private Rigidbody rb;
@@ -26,15 +34,23 @@ public class FollowEnemy : Enemy
 
     private void Update()
     {
-        if (CanSeeTarget())
+        Debug.Log(fovAngle);
+        UpdateMemoryTime();
+        Debug.DrawLine(transform.position, transform.forward * sightDistance + transform.position, Color.blue);
+        Debug.DrawLine(transform.position, (Quaternion.AngleAxis(fovAngle, transform.up) * (transform.forward * sightDistance)) + transform.position, Color.red);
+        Debug.DrawLine(transform.position, (Quaternion.AngleAxis(-fovAngle, transform.up) * (transform.forward * sightDistance)) + transform.position, Color.red);
+
+        if (CanSeeTarget() || remembersTarget || hasRecievedRelayInfo)
         {
             rb.drag = 0.05f;
             direction = target.transform.position - transform.position;
             direction.Normalize();
 
-            Vector3 velocity = direction * speed;
+            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.LookRotation(direction), rotateSpeed * Time.deltaTime);
 
-            rb.velocity = new Vector3(velocity.x, velocity.y, velocity.z);
+            Vector3 travelDirection = Vector3.Lerp(rb.velocity, transform.forward * speed, Time.deltaTime * acceleration);
+
+            rb.velocity = travelDirection;
         }
         else
         {

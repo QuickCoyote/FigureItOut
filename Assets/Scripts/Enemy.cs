@@ -29,15 +29,14 @@ public abstract class Enemy : MonoBehaviour
     {
         Vector3 newVector = target.transform.position - transform.position;
 
-        float angle = Vector3.Angle(transform.forward, target.transform.position);
+        float angle = Vector3.Angle(transform.forward, newVector);
 
-        if (angle <= fovAngle && angle >= -fovAngle)
+        if (angle < fovAngle && angle > -fovAngle)
         {
             if (newVector.magnitude <= sightDistance)
             {
-                // Now we need to raycast to see if we can see the target
                 RaycastHit hitInfo;
-                Physics.Raycast(transform.position, newVector.normalized, out hitInfo, sightDistance);
+                Physics.Raycast(transform.position, newVector, out hitInfo, sightDistance);
 
                 if (hitInfo.transform != null)
                 {
